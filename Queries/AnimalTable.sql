@@ -11,6 +11,6 @@ FedStatus bit,
 FoodType varchar(255),
 FoodQuantity int,
 ActivityLevel int CHECK(ActivityLevel>0 AND ActivityLevel<10),
-Rooms_ID int,
-FOREIGN KEY (Rooms_ID) REFERENCES Rooms(ID)
+/* Rooms_ID int,
+FOREIGN KEY (Rooms_ID) REFERENCES Rooms(ID) */
 );
