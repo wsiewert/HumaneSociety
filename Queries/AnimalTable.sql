@@ -10,5 +10,5 @@ VaccinationStatus bit,
 FedStatus bit,
 FoodType varchar(255),
 FoodQuantity int,
-ActivityLevel int
+ActivityLevel int CHECK(ActivityLevel>0 AND ActivityLevel<10)
 );
