@@ -9,6 +9,10 @@ VaccinationStatus bit NOT NULL,
 FoodType varchar(255) NOT NULL,
 FoodQuantity int NOT NULL,
 ActivityLevel int CHECK(ActivityLevel>0 AND ActivityLevel<10) NOT NULL,
-/* Rooms_ID int,
-FOREIGN KEY (Rooms_ID) REFERENCES Rooms(ID) */
+FK_Rooms_ID int,
+FK_Customers_ID int,
+FOREIGN KEY (FK_Rooms_ID) REFERENCES dbo.Rooms(ID),
+FOREIGN KEY (FK_Customers_ID) REFERENCES dbo.Customers(ID)
 );
+
+Select * FROM Animals
