@@ -8,6 +8,8 @@ namespace HumanSociety
 {
     class HumaneSociety
     {
+        HumaneSocietyDBDataContext humaneSocietyDB = new HumaneSocietyDBDataContext();
+
         public HumaneSociety()
         {
 
@@ -15,7 +17,7 @@ namespace HumanSociety
 
         public void Start()
         {
-            
+            //UI main menu
         }
 
         public bool AddAnimal()
@@ -32,7 +34,6 @@ namespace HumanSociety
             string gender = UI.GetUserInput("Provide a gender:");
             decimal price = decimal.Parse(UI.GetUserInput("Provide a selling price:"));
 
-            HumaneSocietyDBDataContext humaneSocietyDB = new HumaneSocietyDBDataContext();
             Animal animal = new Animal
             {
                 ActivityLevel = activityLevel,
@@ -48,6 +49,8 @@ namespace HumanSociety
                 Price = price
             };
 
+            //add animal to room
+
             humaneSocietyDB.Animals.InsertOnSubmit(animal);
             humaneSocietyDB.SubmitChanges();
             return false;
@@ -58,5 +61,13 @@ namespace HumanSociety
             // Add an exisiting animal to an empty room
             // return room number?
         }
+
+        public void GetInfoByRoomNumber()
+        {
+
+        }
+
+        // add in sorting methods to sort and search.
+        //UI display animal information.
     }
 }
