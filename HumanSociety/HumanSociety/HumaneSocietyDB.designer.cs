@@ -22,6 +22,7 @@ namespace HumanSociety
 	using System;
 	
 	
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HumaneSociety")]
 	public partial class HumaneSocietyDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -30,6 +31,12 @@ namespace HumanSociety
     #region Extensibility Method Definitions
     partial void OnCreated();
     #endregion
+		
+		public HumaneSocietyDBDataContext() : 
+				base(global::HumanSociety.Properties.Settings.Default.HumaneSocietyConnectionString, mappingSource)
+		{
+			OnCreated();
+		}
 		
 		public HumaneSocietyDBDataContext(string connection) : 
 				base(connection, mappingSource)
