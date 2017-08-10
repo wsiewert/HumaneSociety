@@ -28,25 +28,35 @@ namespace HumanSociety
             string species = UI.GetUserInput("Provide a species");
             bool vaccinationStatus = false;
             string foodType = UI.GetUserInput("Provide a foodtype:");
-            int foodQuantity = int.Parse(UI.GetUserInput("Provide a food type"));
+            int foodQuantity = int.Parse(UI.GetUserInput("Provide the quanitity of food:"));
+            string gender = UI.GetUserInput("Provide a gender:");
+            decimal price = decimal.Parse(UI.GetUserInput("Provide a selling price:"));
 
             HumaneSocietyDBDataContext humaneSocietyDB = new HumaneSocietyDBDataContext();
             Animal animal = new Animal
             {
-                ActivityLevel = 5,
-                Age = 5,
-                AdoptionStatus = false,
-                Breed = "EXAMPLE",
-                Name = "EXAMPLE",
-                Species = "EXAMPLE",
-                VaccinationStatus = false,
-                FoodType = "EXAMPLE",
-                FoodQuantity = 5,
+                ActivityLevel = activityLevel,
+                Age = age,
+                AdoptionStatus = adoptionStatus,
+                Breed = breed,
+                Name = name,
+                Species = species,
+                VaccinationStatus = vaccinationStatus,
+                FoodType = foodType,
+                FoodQuantity = foodQuantity,
+                Gender = gender,
+                Price = price
             };
 
             humaneSocietyDB.Animals.InsertOnSubmit(animal);
             humaneSocietyDB.SubmitChanges();
             return false;
+        }
+
+        public void AddAnimalToRoom(Animal animal)
+        {
+            // Add an exisiting animal to an empty room
+            // return room number?
         }
     }
 }

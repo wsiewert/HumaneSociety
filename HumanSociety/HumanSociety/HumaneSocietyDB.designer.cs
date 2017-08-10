@@ -112,6 +112,8 @@ namespace HumanSociety
 		
 		private string _Breed;
 		
+		private string _Gender;
+		
 		private bool _AdoptionStatus;
 		
 		private bool _VaccinationStatus;
@@ -121,6 +123,8 @@ namespace HumanSociety
 		private int _FoodQuantity;
 		
 		private int _ActivityLevel;
+		
+		private decimal _Price;
 		
 		private System.Nullable<int> _FK_Rooms_ID;
 		
@@ -144,6 +148,8 @@ namespace HumanSociety
     partial void OnSpeciesChanged();
     partial void OnBreedChanging(string value);
     partial void OnBreedChanged();
+    partial void OnGenderChanging(string value);
+    partial void OnGenderChanged();
     partial void OnAdoptionStatusChanging(bool value);
     partial void OnAdoptionStatusChanged();
     partial void OnVaccinationStatusChanging(bool value);
@@ -154,6 +160,8 @@ namespace HumanSociety
     partial void OnFoodQuantityChanged();
     partial void OnActivityLevelChanging(int value);
     partial void OnActivityLevelChanged();
+    partial void OnPriceChanging(decimal value);
+    partial void OnPriceChanged();
     partial void OnFK_Rooms_IDChanging(System.Nullable<int> value);
     partial void OnFK_Rooms_IDChanged();
     partial void OnFK_Customers_IDChanging(System.Nullable<int> value);
@@ -267,6 +275,26 @@ namespace HumanSociety
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Gender
+		{
+			get
+			{
+				return this._Gender;
+			}
+			set
+			{
+				if ((this._Gender != value))
+				{
+					this.OnGenderChanging(value);
+					this.SendPropertyChanging();
+					this._Gender = value;
+					this.SendPropertyChanged("Gender");
+					this.OnGenderChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdoptionStatus", DbType="Bit NOT NULL")]
 		public bool AdoptionStatus
 		{
@@ -363,6 +391,26 @@ namespace HumanSociety
 					this._ActivityLevel = value;
 					this.SendPropertyChanged("ActivityLevel");
 					this.OnActivityLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(18,0) NOT NULL")]
+		public decimal Price
+		{
+			get
+			{
+				return this._Price;
+			}
+			set
+			{
+				if ((this._Price != value))
+				{
+					this.OnPriceChanging(value);
+					this.SendPropertyChanging();
+					this._Price = value;
+					this.SendPropertyChanged("Price");
+					this.OnPriceChanged();
 				}
 			}
 		}
