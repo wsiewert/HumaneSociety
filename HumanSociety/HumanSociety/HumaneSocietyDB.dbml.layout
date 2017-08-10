@@ -1,4 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="HumaneSocietyDB">
   <DataContextMoniker Name="/HumaneSocietyDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c6c64975-75c2-4775-85ed-33a9ec8659be" absoluteBounds="0.5, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/HumaneSocietyDBDataContext/Animal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa966bc4-3756-429e-b18f-20d279835c3f" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3bf846b9-83d9-47de-be7f-b47ab042d579" absoluteBounds="4.125, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/HumaneSocietyDBDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2852073-e5d0-4d6f-a076-d267ff3b4ee7" absoluteBounds="4.14, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 1.48159912109375); (2.5 : 1.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HumaneSocietyDBDataContext/Customer/Customer_Animal" />
+      <nodes>
+        <classShapeMoniker Id="3bf846b9-83d9-47de-be7f-b47ab042d579" />
+        <classShapeMoniker Id="c6c64975-75c2-4775-85ed-33a9ec8659be" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="40e59939-4d8b-4cc2-a2e3-28499d4d18ff" absoluteBounds="0.875, 4.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/HumaneSocietyDBDataContext/Room" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ccf9ebd9-76f5-4ee8-bc53-8f11329d75c3" absoluteBounds="0.88999999999999968, 4.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.6875 : 4.5); (1.6875 : 3.6170068359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/HumaneSocietyDBDataContext/Room/Room_Animal" />
+      <nodes>
+        <classShapeMoniker Id="40e59939-4d8b-4cc2-a2e3-28499d4d18ff" />
+        <classShapeMoniker Id="c6c64975-75c2-4775-85ed-33a9ec8659be" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
 </ordesignerObjectsDiagram>
