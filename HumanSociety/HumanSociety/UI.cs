@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace HumanSociety
 {
-    class UI
+    static class UI
     {
-
+        public static string GetUserInput(string message)
+        {
+            Console.WriteLine(message);
+            string userInput = Console.ReadLine();
+            return userInput;
+        }
     }
 }
