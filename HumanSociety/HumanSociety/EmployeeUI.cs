@@ -8,5 +8,19 @@ namespace HumanSociety
 {
     class EmployeeUI
     {
+        public EmployeeUI()
+        {
+
+        }
+
+        public void Start()
+        {
+
+        }
+
+        public void GetEmployeeOptions()
+        {
+
+        }
     }
 }

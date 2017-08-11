@@ -17,7 +17,10 @@ namespace HumanSociety
 
         public void Start()
         {
+            UI.DisplayStartDialogue();
             //UI main menu
+            //access employee interface?
+            //access customer interface?
         }
 
         public bool AddAnimal()
