@@ -23,6 +23,21 @@ namespace HumanSociety
             Console.WriteLine("2. Customer");
         }
 
+        public static string GetStartInterface()
+        {
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "1":
+                    return userInput;
+                case "2":
+                    return userInput;
+                default:
+                    Console.WriteLine("Please choose a valid command");
+                    return GetStartInterface();
+            }
+        }
+
         public static List<object> CreateAnimalProfile()
         {
             List<object> animalProfileList = new List<object>() { };

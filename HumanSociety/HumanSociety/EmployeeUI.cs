@@ -8,14 +8,16 @@ namespace HumanSociety
 {
     class EmployeeUI
     {
-        public EmployeeUI()
-        {
+        HumaneSociety humaneSociety;
 
+        public EmployeeUI(HumaneSociety humaneSociety)
+        {
+            this.humaneSociety = humaneSociety;
         }
 
         public void Start()
         {
-
+            
         }
 
         public void GetEmployeeOptions()

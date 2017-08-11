@@ -18,6 +18,20 @@ namespace HumanSociety
         public void Start()
         {
             UI.DisplayStartDialogue();
+            string userInput = UI.GetStartInterface();
+            if (userInput == "1")
+            {
+                EmployeeUI emplyoee = new EmployeeUI(this);
+                emplyoee.Start();
+            }
+            else if (userInput == "2")
+            {
+                CustomerUI customer = new CustomerUI(this);
+            }
+
+            //if exiting from a UI then start again or (quit)
+            //Start();
+
             //UI main menu
             //access employee interface?
             //access customer interface?
