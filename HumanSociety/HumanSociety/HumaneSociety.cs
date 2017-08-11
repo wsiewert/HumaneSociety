@@ -26,7 +26,7 @@ namespace HumanSociety
 
             if (emptyRoomID == null)
             {
-                //cw("No rooms available at this time.")
+                Console.WriteLine("No Rooms are available.");
                 return false;
             }
 
@@ -129,12 +129,9 @@ namespace HumanSociety
             {
                 x.VaccinationStatus = true;
             }
+            humaneSocietyDB.SubmitChanges();
         }
 
-        private void GetInfoByRoomNumber()
-        {
-            //get room number, check ID
-            //take ID from room number and check animal table with that foreign key
-        }
+
     }
 }
