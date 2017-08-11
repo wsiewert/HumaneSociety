@@ -37,7 +37,7 @@ namespace HumanSociety
             string name = UI.GetUserInput("Provide a name:");
             //create a list of species that can be added to
             //"this species doesnt exist, would you like to add it to the humanesociety?"
-            string species = UI.GetUserInput("Provide a species");
+            string species = UI.GetUserInput("Provide a species:");
             bool vaccinationStatus = false;
             string foodType = UI.GetUserInput("Provide a foodtype:");
             int foodQuantity = int.Parse(UI.GetUserInput("Provide the quanitity of food:"));
@@ -120,6 +120,15 @@ namespace HumanSociety
                 x.AdoptionStatus = status;
             }
             humaneSocietyDB.SubmitChanges();
+        }
+
+        public void VaccinateAnimal(int animalID)
+        {
+            var vaccinate = humaneSocietyDB.Animals.Where(x => x.ID == animalID);
+            foreach (var x in vaccinate)
+            {
+                x.VaccinationStatus = true;
+            }
         }
 
         private void GetInfoByRoomNumber()
