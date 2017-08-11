@@ -11,7 +11,7 @@ namespace HumanSociety
         public static string GetUserInput(string message)
         {
             Console.WriteLine(message);
-            string userInput = Console.ReadLine();
+            string userInput = Console.ReadLine().ToLower();
             return userInput;
         }
     }

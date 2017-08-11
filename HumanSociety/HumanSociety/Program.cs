@@ -10,7 +10,7 @@ namespace HumanSociety
     {
         static void Main(string[] args)
         {
-            //HumaneSocietyDBDataContext humaneSocietyDB = new HumaneSocietyDBDataContext();
+            HumaneSocietyDBDataContext humaneSocietyDB = new HumaneSocietyDBDataContext();
             //Animal animal = new Animal
             //{
             //    ActivityLevel = 5,
@@ -27,8 +27,17 @@ namespace HumanSociety
             //humaneSocietyDB.Animals.InsertOnSubmit(animal);
             //humaneSocietyDB.SubmitChanges();
 
+            //var roomNumber = humaneSocietyDB.Rooms.Where(x => x.OccupiedStatus == false);
+
+            //foreach (var x in roomNumber)
+            //{
+            //    Console.WriteLine(x.RoomNumber);
+            //}
+
             HumaneSociety humaneSociety = new HumaneSociety();
-            humaneSociety.AddAnimal();
+            //humaneSociety.AddAnimal();
+            //humaneSociety.RemoveAnimalFromRoom(5);
+            //humaneSociety.SetAdoptionStatus(6,true);
 
             Console.ReadLine();
         }
