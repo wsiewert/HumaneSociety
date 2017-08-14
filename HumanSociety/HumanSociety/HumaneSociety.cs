@@ -31,7 +31,7 @@ namespace HumanSociety
                     break;
                 case "2":
                     CustomerUI customer = new CustomerUI(this);
-                    //customer.Start();
+                    customer.Start();
                     Start();
                     break;
                 default:
@@ -82,6 +82,22 @@ namespace HumanSociety
             humaneSocietyDB.SubmitChanges();
             AddAnimalToRoom(animal.ID, emptyRoomID);
             return true;
+        }
+
+        public void AddCustomerProfile()
+        {
+            List<object> customerProfile = UI.CreateCustomerProfile();
+            Customer customer = new Customer
+            {
+                FirstName = customerProfile[0].ToString(),
+                LastName = customerProfile[1].ToString(),
+                Age = int.Parse(customerProfile[2].ToString()),
+                ActivityLevel = int.Parse(customerProfile[3].ToString()),
+                MartialStatus = bool.Parse(customerProfile[4].ToString()),
+                Occupation = bool.Parse(customerProfile[5].ToString())
+            };
+            humaneSocietyDB.Customers.InsertOnSubmit(customer);
+            humaneSocietyDB.SubmitChanges();
         }
 
         private void AddAnimalToRoom(int animalID, int? roomID)

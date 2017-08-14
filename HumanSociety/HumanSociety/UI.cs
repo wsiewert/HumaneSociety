@@ -35,7 +35,106 @@ namespace HumanSociety
         {
             List<object> customerProfileList = new List<object>() { };
             //Create the Customer Profile dialogue
+            customerProfileList.Add(GetCustomerFirstName());
+            customerProfileList.Add(GetCustomerLastName());
+            customerProfileList.Add(GetCustomerAge());
+            customerProfileList.Add(GetCustomerActivityLevel());
+            customerProfileList.Add(GetCustomerMartialStatus());
+            customerProfileList.Add(GetCustomerOccupationStatus());
             return customerProfileList;
+        }
+
+        private static string GetCustomerFirstName()
+        {
+            Console.WriteLine("Provide a first name:");
+            string userInput = Console.ReadLine();
+            return userInput;
+        }
+
+        private static string GetCustomerLastName()
+        {
+            Console.WriteLine("Provide a last name:");
+            string userInput = Console.ReadLine();
+            return userInput;
+        }
+
+        private static int GetCustomerAge()
+        {
+            Console.WriteLine("Provide an age:");
+            int userInput = 0;
+            try
+            {
+                userInput = int.Parse(Console.ReadLine());
+                return userInput;
+            }
+            catch (Exception)
+            {
+                DisplayProvideANumber();
+                return GetCustomerAge();
+            }
+        }
+
+        private static int GetCustomerActivityLevel()
+        {
+            Console.WriteLine("Please Provide an activity level between 1-10");
+            int userInput = 0;
+            try
+            {
+                userInput = int.Parse(Console.ReadLine());
+                if (userInput > 0 && userInput < 11)
+                {
+                    return userInput;
+                }
+                else
+                {
+                    DisplayRedText("Please povide a number within 1-10");
+                    return GetCustomerActivityLevel();
+                }
+            }
+            catch (Exception)
+            {
+                DisplayProvideANumber();
+                return GetCustomerActivityLevel();
+            }
+        }
+
+        private static bool GetCustomerMartialStatus()
+        {
+            Console.WriteLine("Are you Married (Y/N)?");
+            string userInput = Console.ReadLine().ToLower();
+            switch (userInput)
+            {
+                case "y":
+                    return true;
+                case "n":
+                    return false;
+                default:
+                    DisplayRedText("Please Privde 'y' or 'n'");
+                    return GetCustomerMartialStatus();
+            }
+        }
+
+        private static bool GetCustomerOccupationStatus()
+        {
+            Console.WriteLine("Do you have a job (Y/N)?");
+            string userInput = Console.ReadLine().ToLower();
+            switch (userInput)
+            {
+                case "y":
+                    return true;
+                case "n":
+                    return false;
+                default:
+                    DisplayRedText("Please Privde 'y' or 'n'");
+                    return GetCustomerOccupationStatus();
+            }
+        }
+
+        public static void DisplayCustomerMainMenu()
+        {
+            Console.WriteLine("Choose 1 of the following options:");
+            Console.WriteLine("1. Create New Customer Profile");
+            Console.WriteLine("0. Exit Customer Menu");
         }
 
         public static void DisplayEmployeeMainMenu()
@@ -63,6 +162,20 @@ namespace HumanSociety
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("NOT A COMMAND");
+            Console.ResetColor();
+        }
+
+        public static void DisplayProvideANumber()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Please Provide a Number!");
+            Console.ResetColor();
+        }
+
+        public static void DisplayRedText(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
             Console.ResetColor();
         }
     }

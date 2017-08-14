@@ -17,9 +17,23 @@ namespace HumanSociety
             this.humaneSociety = humaneSociety;
         }
 
-        private void CreateNewUserProfile()
+        public void Start()
         {
-            //UI.create new user... return all info in a list.
+            UI.DisplayCustomerMainMenu();
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "0":
+                    break;
+                case "1":
+                    humaneSociety.AddCustomerProfile();
+                    Start();
+                    break;
+                default:
+                    UI.DisplayNotACommand();
+                    Start();
+                    break;
+            }
         }
     }
 }
