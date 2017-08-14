@@ -184,16 +184,16 @@ namespace HumanSociety
             foreach (var item in vaccinate)
             {
                 Console.WriteLine($"  [ID: {item.ID}]");
-                Console.WriteLine($"  {item.Name}");
-                Console.WriteLine($"  {item.Age}");
-                Console.WriteLine($"  {item.Species}");
-                Console.WriteLine($"  {item.Breed}");
-                Console.WriteLine($"  {item.Gender}");
+                Console.WriteLine($"  Name: {item.Name}");
+                Console.WriteLine($"  Age: {item.Age}");
+                Console.WriteLine($"  Species: {item.Species}");
+                Console.WriteLine($"  Breed: {item.Breed}");
+                Console.WriteLine($"  Gender: {item.Gender}");
                 Console.WriteLine($"  Adopted: {item.AdoptionStatus}");
                 Console.WriteLine($"  Vaccinated: {item.VaccinationStatus}");
-                Console.WriteLine($"  {item.FoodType}");
-                Console.WriteLine($"  {item.FoodQuantity}");
-                Console.WriteLine($"  {item.ActivityLevel}");
+                Console.WriteLine($"  Food Type: {item.FoodType}");
+                Console.WriteLine($"  Food Quantity: {item.FoodQuantity}");
+                Console.WriteLine($"  Activity Level: {item.ActivityLevel}");
                 Console.WriteLine($"  ${item.Price}");
             }
         }
@@ -232,6 +232,23 @@ namespace HumanSociety
             {
                 Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}, {item.Gender}");
             }
+        }
+
+        public void DisplayAnimalFoodType()
+        {
+            var foodType = humaneSocietyDB.Animals.OrderBy(x => x.FoodType);
+            foreach (var item in foodType)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}");
+                Console.WriteLine($"  Food Type: {item.FoodType}");
+                Console.WriteLine($"  Food Quantity: {item.FoodQuantity}");
+                Console.WriteLine("");
+            }
+        }
+
+        public void SearchCollectionBySpecies()
+        {
+            // Use collection to search and refine the search.
         }
     }
 }

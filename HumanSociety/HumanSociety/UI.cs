@@ -45,7 +45,8 @@ namespace HumanSociety
             Console.WriteLine("2. Display Rooms");
             Console.WriteLine("3. Display Adopted Animals");
             Console.WriteLine("4. Display Susceptible Animals");
-            Console.WriteLine("5. Sort Animals");
+            Console.WriteLine("5. Categorize Animals");
+            Console.WriteLine("6. Check Animal Food And Quantity");
             Console.WriteLine("0. Exit Employee Menu");
         }
 

@@ -41,7 +41,11 @@ namespace HumanSociety
                     Start();
                     break;
                 case "5":
-                    SortBy();
+                    CategorizeBy();
+                    Start();
+                    break;
+                case "6":
+                    humaneSociety.DisplayAnimalFoodType();
                     Start();
                     break;
                 default:
@@ -68,7 +72,7 @@ namespace HumanSociety
             }
         }
 
-        public void SortBy()
+        public void CategorizeBy()
         {
             UI.DisplaySortByMenu();
             string userInput = Console.ReadLine();
@@ -92,7 +96,7 @@ namespace HumanSociety
                     break;
                 default:
                     UI.DisplayNotACommand();
-                    SortBy();
+                    CategorizeBy();
                     break;
             }
         }
