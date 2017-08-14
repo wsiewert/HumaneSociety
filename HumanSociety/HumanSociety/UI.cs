@@ -34,7 +34,6 @@ namespace HumanSociety
         public static List<object> CreateCustomerProfile()
         {
             List<object> customerProfileList = new List<object>() { };
-            //Create the Customer Profile dialogue
             customerProfileList.Add(GetCustomerFirstName());
             customerProfileList.Add(GetCustomerLastName());
             customerProfileList.Add(GetCustomerAge());

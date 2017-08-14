@@ -84,7 +84,7 @@ namespace HumanSociety
             return true;
         }
 
-        public void AddCustomerProfile()
+        public int AddCustomerProfile()
         {
             List<object> customerProfile = UI.CreateCustomerProfile();
             Customer customer = new Customer
@@ -98,6 +98,7 @@ namespace HumanSociety
             };
             humaneSocietyDB.Customers.InsertOnSubmit(customer);
             humaneSocietyDB.SubmitChanges();
+            return customer.ID;
         }
 
         private void AddAnimalToRoom(int animalID, int? roomID)
@@ -260,6 +261,11 @@ namespace HumanSociety
                 Console.WriteLine($"  Food Quantity: {item.FoodQuantity}");
                 Console.WriteLine("");
             }
+        }
+
+        public bool CheckCustomerEligibiltiy()
+        {
+            return false;
         }
 
         public void SearchCollectionBySpecies()

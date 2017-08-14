@@ -26,7 +26,7 @@ namespace HumanSociety
                 case "0":
                     break;
                 case "1":
-                    humaneSociety.AddCustomerProfile();
+                    currentCustomerID = humaneSociety.AddCustomerProfile();
                     Start();
                     break;
                 default:
