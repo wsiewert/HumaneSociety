@@ -133,7 +133,15 @@ namespace HumanSociety
         {
             Console.WriteLine("Choose 1 of the following options:");
             Console.WriteLine("1. Create New Customer Profile");
+            Console.WriteLine("2. Search and adopt");
             Console.WriteLine("0. Exit Customer Menu");
+        }
+
+        public static void DisplayCustomerSearchByMenu()
+        {
+            Console.WriteLine("Select the type of search:");
+            Console.WriteLine("1. Species");
+            Console.WriteLine("2. Age");
         }
 
         public static void DisplayEmployeeMainMenu()

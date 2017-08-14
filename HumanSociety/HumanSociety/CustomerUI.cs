@@ -29,10 +29,57 @@ namespace HumanSociety
                     currentCustomerID = humaneSociety.AddCustomerProfile();
                     Start();
                     break;
+                case "2":
+                    SearchBy();
+                    Start();
+                    break;
                 default:
                     UI.DisplayNotACommand();
                     Start();
                     break;
+            }
+        }
+
+        public void SearchBy()
+        {
+            UI.DisplayCustomerSearchByMenu();
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "1":
+                    humaneSociety.SearchCollectionBySpecies(UI.GetUserInput("Provide a Species:"));
+                    PurchaseAnimal();
+                    break;
+                case "2":
+                    humaneSociety.SearchCollectionBySpecies(UI.GetUserInput("Provide an Age"));
+                    PurchaseAnimal();
+                    break;
+                default:
+                    UI.DisplayNotACommand();
+                    SearchBy();
+                    break;
+            }
+        }
+
+        public void PurchaseAnimal()
+        {
+            int userInput = 0;
+            if (humaneSociety.CheckCustomerEligibiltiy(currentCustomerID))
+            {
+                try
+                {
+                    userInput = int.Parse(UI.GetUserInput("Please Select an anmial to purchase"));
+                    //PurchaseAnimal();
+                }
+                catch (Exception)
+                {
+                    UI.DisplayProvideANumber();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry you are not eligible to pruchase.");
+                return;
             }
         }
     }

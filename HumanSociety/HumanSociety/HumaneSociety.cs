@@ -143,6 +143,14 @@ namespace HumanSociety
             return null;
         }
 
+        public void PurchaseAnimal(int customerID, int animalID)
+        {
+            //join tables
+            //set adoption status
+            //remove from room
+            //setup transaction table
+        }
+
         public void SetAdoptionStatus(int animalID, bool status)
         {
             var adoptionStatus = humaneSocietyDB.Animals.Where(x => x.ID == animalID);
@@ -263,14 +271,43 @@ namespace HumanSociety
             }
         }
 
-        public bool CheckCustomerEligibiltiy()
+        public bool CheckCustomerEligibiltiy(int CustomerID)
         {
+            int temporaryAge = 0;
+            int temporaryActivityLevel = 0;
+            bool temporaryMartialStatus = false;
+            bool temporaryOccupation = false;
+            var customerElegibilty = humaneSocietyDB.Customers.Where(x => x.ID == CustomerID);
+            foreach (var x in customerElegibilty)
+            {
+                temporaryAge = x.Age;
+                temporaryActivityLevel = x.ActivityLevel;
+                temporaryMartialStatus = x.MartialStatus;
+                temporaryOccupation = x.Occupation;
+            }
+            if ((temporaryActivityLevel > 2 && temporaryAge >= 18) && (temporaryMartialStatus || temporaryOccupation))
+            {
+                return true;
+            }
             return false;
         }
 
-        public void SearchCollectionBySpecies()
+        public void SearchCollectionBySpecies(string species)
         {
-            // Use collection to search and refine the search.
+            var searchSpecies = humaneSocietyDB.Animals.Where(x => x.Species == species);
+            foreach (var item in searchSpecies)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species} {item.Name}");
+            }
+        }
+
+        public void SearchCollectionByAge(int age)
+        {
+            var searchSpecies = humaneSocietyDB.Animals.Where(x => x.Age == age);
+            foreach (var item in searchSpecies)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species} {item.Name} {item.Age}");
+            }
         }
     }
 }
