@@ -31,6 +31,10 @@ namespace HumanSociety
                     humaneSociety.DisplayRooms();
                     Start();
                     break;
+                case "3":
+                    humaneSociety.DisplayAdoptedAnimals();
+                    Start();
+                    break;
                 default:
                     UI.DisplayNotACommand();
                     Start();

@@ -35,11 +35,12 @@ namespace HumanSociety
             //}
 
             HumaneSociety humaneSociety = new HumaneSociety();
-            humaneSociety.AddAnimal();
+            //humaneSociety.AddAnimal();
             //humaneSociety.RemoveAnimalFromRoom(5);
             //humaneSociety.SetAdoptionStatus(6,true);
             //humaneSociety.VaccinateAnimal(6);
-            humaneSociety.DisplayRooms();
+            //humaneSociety.DisplayRooms();
+            humaneSociety.Start();
 
             Console.ReadLine();
         }

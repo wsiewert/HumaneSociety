@@ -43,6 +43,7 @@ namespace HumanSociety
             Console.WriteLine("Choose 1 of the following options:");
             Console.WriteLine("1. Add Animal");
             Console.WriteLine("2. Display Rooms");
+            Console.WriteLine("3. Display Adopted Animals");
             Console.WriteLine("0. Exit Employee Menu");
         }
 

@@ -31,7 +31,7 @@ namespace HumanSociety
                     break;
                 case "2":
                     CustomerUI customer = new CustomerUI(this);
-                    //customer.start();
+                    //customer.Start();
                     Start();
                     break;
                 default:
@@ -52,12 +52,10 @@ namespace HumanSociety
             }
 
             int activityLevel = int.Parse(UI.GetUserInput("Provide an activity level 1-10"));
+            string name = UI.GetUserInput("Provide a name:");
             int age = int.Parse(UI.GetUserInput("Provide animal age:"));
             bool adoptionStatus = false;
             string breed = UI.GetUserInput("Provide a breed:");
-            string name = UI.GetUserInput("Provide a name:");
-            //create a list of species that can be added to
-            //"this species doesnt exist, would you like to add it to the humanesociety?"
             string species = UI.GetUserInput("Provide a species:");
             bool vaccinationStatus = false;
             string foodType = UI.GetUserInput("Provide a foodtype:");
@@ -88,8 +86,6 @@ namespace HumanSociety
 
         private void AddAnimalToRoom(int animalID, int? roomID)
         {
-            // Add an exisiting animal to an empty room
-            // Change occupied status
             var availableRoom = humaneSocietyDB.Animals.Where(x => x.ID == animalID);
             foreach (var x in availableRoom)
             {
@@ -105,9 +101,6 @@ namespace HumanSociety
 
         public void RemoveAnimalFromRoom(int animalID)
         {
-            //remove animal
-            //change occupied status
-            //Use join??
             int? roomID = null;
             var availableRoom = humaneSocietyDB.Animals.Where(x => x.ID == animalID);
             foreach (var x in availableRoom)
@@ -159,13 +152,21 @@ namespace HumanSociety
                 a => a.FK_Rooms_ID,
                 r => r.ID,
                 (a, r) => new { r.RoomNumber, a.Species, a.Name});
-
+            Console.WriteLine("");
             foreach (var item in rooms)
             {
                 Console.WriteLine($"[ROOM {item.RoomNumber}] {item.Species} {item.Name}");
             }
+            Console.WriteLine("");
         }
 
-
+        public void DisplayAdoptedAnimals()
+        {
+            var adopted = humaneSocietyDB.Animals.Where(x => x.AdoptionStatus == true);
+            foreach (var x in adopted)
+            {
+                Console.WriteLine("{0} {1}",x.Species,x.Name);
+            }
+        }
     }
 }
