@@ -24,11 +24,15 @@ namespace HumanSociety
                 case "0":
                     break;
                 case "1":
-                    //do something then return to start
+                    humaneSociety.AddAnimal();
+                    Start();
+                    break;
+                case "2":
+                    humaneSociety.DisplayRooms();
                     Start();
                     break;
                 default:
-                    Console.WriteLine("NOT A COMMAND");
+                    UI.DisplayNotACommand();
                     Start();
                     break;
             }

@@ -18,23 +18,27 @@ namespace HumanSociety
         public void Start()
         {
             UI.DisplayStartDialogue();
-            string userInput = UI.GetStartInterface();
-            if (userInput == "1")
+            string userInput = Console.ReadLine();
+            switch (userInput)
             {
-                EmployeeUI emplyoee = new EmployeeUI(this);
-                emplyoee.Start();
+                case "0":
+                    Environment.Exit(0);
+                    break;
+                case "1":
+                    EmployeeUI employee = new EmployeeUI(this);
+                    employee.Start();
+                    Start();
+                    break;
+                case "2":
+                    CustomerUI customer = new CustomerUI(this);
+                    //customer.start();
+                    Start();
+                    break;
+                default:
+                    UI.DisplayNotACommand();
+                    Start();
+                    break;
             }
-            else if (userInput == "2")
-            {
-                CustomerUI customer = new CustomerUI(this);
-            }
-
-            //if exiting from a UI then start again or (quit)
-            //Start();
-
-            //UI main menu
-            //access employee interface?
-            //access customer interface?
         }
 
         public bool AddAnimal()

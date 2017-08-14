@@ -18,24 +18,10 @@ namespace HumanSociety
         public static void DisplayStartDialogue()
         {
             Console.WriteLine("Welcome to the Humane Society");
-            Console.WriteLine("You may conintue as:");
+            Console.WriteLine("Conintue as:");
             Console.WriteLine("1. Employee");
             Console.WriteLine("2. Customer");
-        }
-
-        public static string GetStartInterface()
-        {
-            string userInput = Console.ReadLine();
-            switch (userInput)
-            { 
-                case "1":
-                    return userInput;
-                case "2":
-                    return userInput;
-                default:
-                    Console.WriteLine("Please choose a valid command");
-                    return GetStartInterface();
-            }
+            Console.WriteLine("0. Quit");
         }
 
         public static List<object> CreateAnimalProfile()
@@ -55,8 +41,9 @@ namespace HumanSociety
         public static void DisplayEmployeeMainMenu()
         {
             Console.WriteLine("Choose 1 of the following options:");
-            Console.WriteLine("1. Display Rooms");
-            Console.WriteLine("0. Quit");
+            Console.WriteLine("1. Add Animal");
+            Console.WriteLine("2. Display Rooms");
+            Console.WriteLine("0. Exit Employee Menu");
         }
 
         public static void DisplayNotACommand()
