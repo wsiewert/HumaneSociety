@@ -149,6 +149,11 @@ namespace HumanSociety
             //set adoption status
             //remove from room
             //setup transaction table
+
+            //var rooms = humaneSocietyDB.Animals.Join(humaneSocietyDB.Rooms,
+            //    a => a.FK_Rooms_ID,
+            //    r => r.ID,
+            //    (a, r) => new { r.RoomNumber, a.Species, a.Name });
         }
 
         public void SetAdoptionStatus(int animalID, bool status)
