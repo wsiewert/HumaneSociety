@@ -35,10 +35,32 @@ namespace HumanSociety
                     humaneSociety.DisplayAdoptedAnimals();
                     Start();
                     break;
+                case "4":
+                    humaneSociety.DisplaySusceptibleAnimals();
+                    VaccinateAnimal();
+                    Start();
+                    break;
                 default:
                     UI.DisplayNotACommand();
                     Start();
                     break;
+            }
+        }
+
+        public void VaccinateAnimal()
+        {
+            Console.WriteLine("Type an animals ID to vaccinate it, or 0 to exit:");
+            try
+            {
+                int userInput = int.Parse(Console.ReadLine());
+                if (userInput != 0)
+                {
+                    humaneSociety.VaccinateAnimal(userInput);
+                }
+            }
+            catch (Exception)
+            {
+                VaccinateAnimal();
             }
         }
     }

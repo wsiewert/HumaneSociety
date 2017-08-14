@@ -44,12 +44,13 @@ namespace HumanSociety
             Console.WriteLine("1. Add Animal");
             Console.WriteLine("2. Display Rooms");
             Console.WriteLine("3. Display Adopted Animals");
+            Console.WriteLine("4. Display Susceptible Animals");
             Console.WriteLine("0. Exit Employee Menu");
         }
 
         public static void DisplayNotACommand()
         {
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("NOT A COMMAND");
             Console.ResetColor();
         }

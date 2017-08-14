@@ -168,5 +168,14 @@ namespace HumanSociety
                 Console.WriteLine("{0} {1}",x.Species,x.Name);
             }
         }
+
+        public void DisplaySusceptibleAnimals()
+        {
+            var susceptibleAnimals = humaneSocietyDB.Animals.Where(x => x.VaccinationStatus == false);
+            foreach (var item in susceptibleAnimals)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species} {item.Name}");
+            }
+        }
     }
 }
