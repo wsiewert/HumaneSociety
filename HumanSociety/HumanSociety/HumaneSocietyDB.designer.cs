@@ -30,9 +30,6 @@ namespace HumanSociety
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCustomer(Customer instance);
-    partial void UpdateCustomer(Customer instance);
-    partial void DeleteCustomer(Customer instance);
     partial void InsertRoom(Room instance);
     partial void UpdateRoom(Room instance);
     partial void DeleteRoom(Room instance);
@@ -42,6 +39,9 @@ namespace HumanSociety
     partial void InsertTransaction(Transaction instance);
     partial void UpdateTransaction(Transaction instance);
     partial void DeleteTransaction(Transaction instance);
+    partial void InsertCustomer(Customer instance);
+    partial void UpdateCustomer(Customer instance);
+    partial void DeleteCustomer(Customer instance);
     #endregion
 		
 		public HumaneSocietyDBDataContext() : 
@@ -74,14 +74,6 @@ namespace HumanSociety
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Customer> Customers
-		{
-			get
-			{
-				return this.GetTable<Customer>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Room> Rooms
 		{
 			get
@@ -105,243 +97,13 @@ namespace HumanSociety
 				return this.GetTable<Transaction>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customers")]
-	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-		private System.Nullable<int> _ActivityLevel;
-		
-		private System.Nullable<bool> _MartialStatus;
-		
-		private System.Nullable<bool> _Occupation;
-		
-		private EntitySet<Animal> _Animals;
-		
-		private EntitySet<Transaction> _Transactions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnActivityLevelChanging(System.Nullable<int> value);
-    partial void OnActivityLevelChanged();
-    partial void OnMartialStatusChanging(System.Nullable<bool> value);
-    partial void OnMartialStatusChanged();
-    partial void OnOccupationChanging(System.Nullable<bool> value);
-    partial void OnOccupationChanged();
-    #endregion
-		
-		public Customer()
-		{
-			this._Animals = new EntitySet<Animal>(new Action<Animal>(this.attach_Animals), new Action<Animal>(this.detach_Animals));
-			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
+		public System.Data.Linq.Table<Customer> Customers
 		{
 			get
 			{
-				return this._ID;
+				return this.GetTable<Customer>();
 			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(255)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(255)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityLevel", DbType="Int")]
-		public System.Nullable<int> ActivityLevel
-		{
-			get
-			{
-				return this._ActivityLevel;
-			}
-			set
-			{
-				if ((this._ActivityLevel != value))
-				{
-					this.OnActivityLevelChanging(value);
-					this.SendPropertyChanging();
-					this._ActivityLevel = value;
-					this.SendPropertyChanged("ActivityLevel");
-					this.OnActivityLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MartialStatus", DbType="Bit")]
-		public System.Nullable<bool> MartialStatus
-		{
-			get
-			{
-				return this._MartialStatus;
-			}
-			set
-			{
-				if ((this._MartialStatus != value))
-				{
-					this.OnMartialStatusChanging(value);
-					this.SendPropertyChanging();
-					this._MartialStatus = value;
-					this.SendPropertyChanged("MartialStatus");
-					this.OnMartialStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Occupation", DbType="Bit")]
-		public System.Nullable<bool> Occupation
-		{
-			get
-			{
-				return this._Occupation;
-			}
-			set
-			{
-				if ((this._Occupation != value))
-				{
-					this.OnOccupationChanging(value);
-					this.SendPropertyChanging();
-					this._Occupation = value;
-					this.SendPropertyChanged("Occupation");
-					this.OnOccupationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Animal", Storage="_Animals", ThisKey="ID", OtherKey="FK_Customers_ID")]
-		public EntitySet<Animal> Animals
-		{
-			get
-			{
-				return this._Animals;
-			}
-			set
-			{
-				this._Animals.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Transaction", Storage="_Transactions", ThisKey="ID", OtherKey="FK_AnimalID")]
-		public EntitySet<Transaction> Transactions
-		{
-			get
-			{
-				return this._Transactions;
-			}
-			set
-			{
-				this._Transactions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Animals(Animal entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_Animals(Animal entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
-		}
-		
-		private void attach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = this;
-		}
-		
-		private void detach_Transactions(Transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.Customer = null;
 		}
 	}
 	
@@ -519,9 +281,9 @@ namespace HumanSociety
 		
 		private EntitySet<Transaction> _Transactions;
 		
-		private EntityRef<Customer> _Customer;
-		
 		private EntityRef<Room> _Room;
+		
+		private EntityRef<Customer> _Customer;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -560,8 +322,8 @@ namespace HumanSociety
 		public Animal()
 		{
 			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
-			this._Customer = default(EntityRef<Customer>);
 			this._Room = default(EntityRef<Room>);
+			this._Customer = default(EntityRef<Customer>);
 			OnCreated();
 		}
 		
@@ -866,40 +628,6 @@ namespace HumanSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Animal", Storage="_Customer", ThisKey="FK_Customers_ID", OtherKey="ID", IsForeignKey=true)]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
-				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Customer.Entity = null;
-						previousValue.Animals.Remove(this);
-					}
-					this._Customer.Entity = value;
-					if ((value != null))
-					{
-						value.Animals.Add(this);
-						this._FK_Customers_ID = value.ID;
-					}
-					else
-					{
-						this._FK_Customers_ID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Customer");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Room_Animal", Storage="_Room", ThisKey="FK_Rooms_ID", OtherKey="ID", IsForeignKey=true)]
 		public Room Room
 		{
@@ -930,6 +658,40 @@ namespace HumanSociety
 						this._FK_Rooms_ID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Room");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Animal", Storage="_Customer", ThisKey="FK_Customers_ID", OtherKey="ID", IsForeignKey=true)]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.Animals.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.Animals.Add(this);
+						this._FK_Customers_ID = value.ID;
+					}
+					else
+					{
+						this._FK_Customers_ID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Customer");
 				}
 			}
 		}
@@ -981,9 +743,9 @@ namespace HumanSociety
 		
 		private System.Nullable<int> _FK_AnimalID;
 		
-		private EntityRef<Customer> _Customer;
-		
 		private EntityRef<Animal> _Animal;
+		
+		private EntityRef<Customer> _Customer;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1001,8 +763,8 @@ namespace HumanSociety
 		
 		public Transaction()
 		{
-			this._Customer = default(EntityRef<Customer>);
 			this._Animal = default(EntityRef<Animal>);
+			this._Customer = default(EntityRef<Customer>);
 			OnCreated();
 		}
 		
@@ -1094,40 +856,6 @@ namespace HumanSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Transaction", Storage="_Customer", ThisKey="FK_AnimalID", OtherKey="ID", IsForeignKey=true)]
-		public Customer Customer
-		{
-			get
-			{
-				return this._Customer.Entity;
-			}
-			set
-			{
-				Customer previousValue = this._Customer.Entity;
-				if (((previousValue != value) 
-							|| (this._Customer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Customer.Entity = null;
-						previousValue.Transactions.Remove(this);
-					}
-					this._Customer.Entity = value;
-					if ((value != null))
-					{
-						value.Transactions.Add(this);
-						this._FK_AnimalID = value.ID;
-					}
-					else
-					{
-						this._FK_AnimalID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Customer");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Animal_Transaction", Storage="_Animal", ThisKey="FK_CustomerID", OtherKey="ID", IsForeignKey=true)]
 		public Animal Animal
 		{
@@ -1162,6 +890,40 @@ namespace HumanSociety
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Transaction", Storage="_Customer", ThisKey="FK_AnimalID", OtherKey="ID", IsForeignKey=true)]
+		public Customer Customer
+		{
+			get
+			{
+				return this._Customer.Entity;
+			}
+			set
+			{
+				Customer previousValue = this._Customer.Entity;
+				if (((previousValue != value) 
+							|| (this._Customer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Customer.Entity = null;
+						previousValue.Transactions.Remove(this);
+					}
+					this._Customer.Entity = value;
+					if ((value != null))
+					{
+						value.Transactions.Add(this);
+						this._FK_AnimalID = value.ID;
+					}
+					else
+					{
+						this._FK_AnimalID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Customer");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1180,6 +942,268 @@ namespace HumanSociety
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customers")]
+	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private int _Age;
+		
+		private int _ActivityLevel;
+		
+		private bool _MartialStatus;
+		
+		private bool _Occupation;
+		
+		private EntitySet<Animal> _Animals;
+		
+		private EntitySet<Transaction> _Transactions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnAgeChanging(int value);
+    partial void OnAgeChanged();
+    partial void OnActivityLevelChanging(int value);
+    partial void OnActivityLevelChanged();
+    partial void OnMartialStatusChanging(bool value);
+    partial void OnMartialStatusChanged();
+    partial void OnOccupationChanging(bool value);
+    partial void OnOccupationChanged();
+    #endregion
+		
+		public Customer()
+		{
+			this._Animals = new EntitySet<Animal>(new Action<Animal>(this.attach_Animals), new Action<Animal>(this.detach_Animals));
+			this._Transactions = new EntitySet<Transaction>(new Action<Transaction>(this.attach_Transactions), new Action<Transaction>(this.detach_Transactions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Int NOT NULL")]
+		public int Age
+		{
+			get
+			{
+				return this._Age;
+			}
+			set
+			{
+				if ((this._Age != value))
+				{
+					this.OnAgeChanging(value);
+					this.SendPropertyChanging();
+					this._Age = value;
+					this.SendPropertyChanged("Age");
+					this.OnAgeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivityLevel", DbType="Int NOT NULL")]
+		public int ActivityLevel
+		{
+			get
+			{
+				return this._ActivityLevel;
+			}
+			set
+			{
+				if ((this._ActivityLevel != value))
+				{
+					this.OnActivityLevelChanging(value);
+					this.SendPropertyChanging();
+					this._ActivityLevel = value;
+					this.SendPropertyChanged("ActivityLevel");
+					this.OnActivityLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MartialStatus", DbType="Bit NOT NULL")]
+		public bool MartialStatus
+		{
+			get
+			{
+				return this._MartialStatus;
+			}
+			set
+			{
+				if ((this._MartialStatus != value))
+				{
+					this.OnMartialStatusChanging(value);
+					this.SendPropertyChanging();
+					this._MartialStatus = value;
+					this.SendPropertyChanged("MartialStatus");
+					this.OnMartialStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Occupation", DbType="Bit NOT NULL")]
+		public bool Occupation
+		{
+			get
+			{
+				return this._Occupation;
+			}
+			set
+			{
+				if ((this._Occupation != value))
+				{
+					this.OnOccupationChanging(value);
+					this.SendPropertyChanging();
+					this._Occupation = value;
+					this.SendPropertyChanged("Occupation");
+					this.OnOccupationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Animal", Storage="_Animals", ThisKey="ID", OtherKey="FK_Customers_ID")]
+		public EntitySet<Animal> Animals
+		{
+			get
+			{
+				return this._Animals;
+			}
+			set
+			{
+				this._Animals.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Customer_Transaction", Storage="_Transactions", ThisKey="ID", OtherKey="FK_AnimalID")]
+		public EntitySet<Transaction> Transactions
+		{
+			get
+			{
+				return this._Transactions;
+			}
+			set
+			{
+				this._Transactions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Animals(Animal entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_Animals(Animal entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
+		}
+		
+		private void attach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = this;
+		}
+		
+		private void detach_Transactions(Transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.Customer = null;
 		}
 	}
 }

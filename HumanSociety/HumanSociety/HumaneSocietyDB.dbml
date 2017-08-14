@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HumaneSociety" Class="HumaneSocietyDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RSKE7OA;Initial Catalog=HumaneSociety;Integrated Security=True" SettingsObjectName="HumanSociety.Properties.Settings" SettingsPropertyName="HumaneSocietyConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Customers" Member="Customers">
-    <Type Name="Customer">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="ActivityLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MartialStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Occupation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="Customer_Animal" Member="Animals" ThisKey="ID" OtherKey="FK_Customers_ID" Type="Animal" />
-      <Association Name="Customer_Transaction" Member="Transactions" ThisKey="ID" OtherKey="FK_AnimalID" Type="Transaction" />
-    </Type>
-  </Table>
   <Table Name="dbo.Rooms" Member="Rooms">
     <Type Name="Room">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -37,8 +25,8 @@
       <Column Name="FK_Rooms_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FK_Customers_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Animal_Transaction" Member="Transactions" ThisKey="ID" OtherKey="FK_CustomerID" Type="Transaction" />
-      <Association Name="Customer_Animal" Member="Customer" ThisKey="FK_Customers_ID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
       <Association Name="Room_Animal" Member="Room" ThisKey="FK_Rooms_ID" OtherKey="ID" Type="Room" IsForeignKey="true" />
+      <Association Name="Customer_Animal" Member="Customer" ThisKey="FK_Customers_ID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Transactions" Member="Transactions">
@@ -47,8 +35,21 @@
       <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="FK_CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FK_AnimalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Customer_Transaction" Member="Customer" ThisKey="FK_AnimalID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
       <Association Name="Animal_Transaction" Member="Animal" ThisKey="FK_CustomerID" OtherKey="ID" Type="Animal" IsForeignKey="true" />
+      <Association Name="Customer_Transaction" Member="Customer" ThisKey="FK_AnimalID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customers" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Age" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActivityLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MartialStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Occupation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Animal" Member="Animals" ThisKey="ID" OtherKey="FK_Customers_ID" Type="Animal" />
+      <Association Name="Customer_Transaction" Member="Transactions" ThisKey="ID" OtherKey="FK_AnimalID" Type="Transaction" />
     </Type>
   </Table>
 </Database>

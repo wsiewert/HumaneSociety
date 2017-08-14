@@ -9,6 +9,8 @@ namespace HumanSociety
     class CustomerUI
     {
         HumaneSociety humaneSociety;
+        //use the current customer ID when purhasing animals.
+        int currentCustomerID;
 
         public CustomerUI(HumaneSociety humaneSociety)
         {

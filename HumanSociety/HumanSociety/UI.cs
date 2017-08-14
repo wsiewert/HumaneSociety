@@ -45,7 +45,17 @@ namespace HumanSociety
             Console.WriteLine("2. Display Rooms");
             Console.WriteLine("3. Display Adopted Animals");
             Console.WriteLine("4. Display Susceptible Animals");
+            Console.WriteLine("5. Sort Animals");
             Console.WriteLine("0. Exit Employee Menu");
+        }
+
+        public static void DisplaySortByMenu()
+        {
+            Console.WriteLine("Choose how to order the animals:");
+            Console.WriteLine("1. Sort By Age");
+            Console.WriteLine("2. Sort By Gender");
+            Console.WriteLine("3. Sort By Name");
+            Console.WriteLine("4. Sort By Species");
         }
 
         public static void DisplayNotACommand()

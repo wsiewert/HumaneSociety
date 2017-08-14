@@ -155,7 +155,7 @@ namespace HumanSociety
             Console.WriteLine("");
             foreach (var item in rooms)
             {
-                Console.WriteLine($"[ROOM {item.RoomNumber}] {item.Species} {item.Name}");
+                Console.WriteLine($"[ROOM {item.RoomNumber}] {item.Species}, {item.Name}");
             }
             Console.WriteLine("");
         }
@@ -174,7 +174,63 @@ namespace HumanSociety
             var susceptibleAnimals = humaneSocietyDB.Animals.Where(x => x.VaccinationStatus == false);
             foreach (var item in susceptibleAnimals)
             {
-                Console.WriteLine($"[ID: {item.ID}] {item.Species} {item.Name}");
+                Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}");
+            }
+        }
+
+        public void DisplayFullDetailsByID(int animalID)
+        {
+            var vaccinate = humaneSocietyDB.Animals.Where(x => x.ID == animalID);
+            foreach (var item in vaccinate)
+            {
+                Console.WriteLine($"  [ID: {item.ID}]");
+                Console.WriteLine($"  {item.Name}");
+                Console.WriteLine($"  {item.Age}");
+                Console.WriteLine($"  {item.Species}");
+                Console.WriteLine($"  {item.Breed}");
+                Console.WriteLine($"  {item.Gender}");
+                Console.WriteLine($"  Adopted: {item.AdoptionStatus}");
+                Console.WriteLine($"  Vaccinated: {item.VaccinationStatus}");
+                Console.WriteLine($"  {item.FoodType}");
+                Console.WriteLine($"  {item.FoodQuantity}");
+                Console.WriteLine($"  {item.ActivityLevel}");
+                Console.WriteLine($"  ${item.Price}");
+            }
+        }
+
+        public void SortByAge()
+        {
+            var ageSort = humaneSocietyDB.Animals.OrderBy(x => x.Age);
+            foreach (var item in ageSort)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Age}Yr, {item.Species}, {item.Name}");
+            }
+        }
+
+        public void SortByName()
+        {
+            var nameSort = humaneSocietyDB.Animals.OrderBy(x => x.Name);
+            foreach (var item in nameSort)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}");
+            }
+        }
+
+        public void SortBySpecies()
+        {
+            var speciesSort = humaneSocietyDB.Animals.OrderBy(x => x.Species);
+            foreach (var item in speciesSort)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}");
+            }
+        }
+
+        public void SortByGender()
+        {
+            var genderSort = humaneSocietyDB.Animals.OrderBy(x => x.Gender);
+            foreach (var item in genderSort)
+            {
+                Console.WriteLine($"[ID: {item.ID}] {item.Species}, {item.Name}, {item.Gender}");
             }
         }
     }
