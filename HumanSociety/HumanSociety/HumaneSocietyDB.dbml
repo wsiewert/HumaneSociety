@@ -9,6 +9,7 @@
       <Column Name="MartialStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Occupation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="Customer_Animal" Member="Animals" ThisKey="ID" OtherKey="FK_Customers_ID" Type="Animal" />
+      <Association Name="Customer_Transaction" Member="Transactions" ThisKey="ID" OtherKey="FK_AnimalID" Type="Transaction" />
     </Type>
   </Table>
   <Table Name="dbo.Rooms" Member="Rooms">
@@ -35,8 +36,19 @@
       <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="FK_Rooms_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FK_Customers_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Animal_Transaction" Member="Transactions" ThisKey="ID" OtherKey="FK_CustomerID" Type="Transaction" />
       <Association Name="Customer_Animal" Member="Customer" ThisKey="FK_Customers_ID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
       <Association Name="Room_Animal" Member="Room" ThisKey="FK_Rooms_ID" OtherKey="ID" Type="Room" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Transactions" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FK_CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FK_AnimalID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Customer_Transaction" Member="Customer" ThisKey="FK_AnimalID" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+      <Association Name="Animal_Transaction" Member="Animal" ThisKey="FK_CustomerID" OtherKey="ID" Type="Animal" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -149,6 +149,19 @@ namespace HumanSociety
             humaneSocietyDB.SubmitChanges();
         }
 
+        public void DisplayRooms()
+        {
+            var rooms = humaneSocietyDB.Animals.Join(humaneSocietyDB.Rooms,
+                a => a.FK_Rooms_ID,
+                r => r.ID,
+                (a, r) => new { r.RoomNumber, a.Species, a.Name});
+
+            foreach (var item in rooms)
+            {
+                Console.WriteLine($"[ROOM {item.RoomNumber}] {item.Species} {item.Name}");
+            }
+        }
+
 
     }
 }

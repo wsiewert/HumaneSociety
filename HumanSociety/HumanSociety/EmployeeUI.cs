@@ -17,12 +17,21 @@ namespace HumanSociety
 
         public void Start()
         {
-            
-        }
-
-        public void GetEmployeeOptions()
-        {
-
+            UI.DisplayEmployeeMainMenu();
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "0":
+                    break;
+                case "1":
+                    //do something then return to start
+                    Start();
+                    break;
+                default:
+                    Console.WriteLine("NOT A COMMAND");
+                    Start();
+                    break;
+            }
         }
     }
 }

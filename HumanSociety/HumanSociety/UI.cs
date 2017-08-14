@@ -27,7 +27,7 @@ namespace HumanSociety
         {
             string userInput = Console.ReadLine();
             switch (userInput)
-            {
+            { 
                 case "1":
                     return userInput;
                 case "2":
@@ -50,6 +50,20 @@ namespace HumanSociety
             List<object> customerProfileList = new List<object>() { };
             //Create the Customer Profile dialogue
             return customerProfileList;
+        }
+
+        public static void DisplayEmployeeMainMenu()
+        {
+            Console.WriteLine("Choose 1 of the following options:");
+            Console.WriteLine("1. Display Rooms");
+            Console.WriteLine("0. Quit");
+        }
+
+        public static void DisplayNotACommand()
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("NOT A COMMAND");
+            Console.ResetColor();
         }
     }
 }

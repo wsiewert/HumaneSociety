@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerUI.cs" />
+    <Compile Include="EmployeeUI.cs" />
     <Compile Include="HumaneSociety.cs" />
     <Compile Include="HumaneSocietyDB.designer.cs">
       <AutoGen>True</AutoGen>
